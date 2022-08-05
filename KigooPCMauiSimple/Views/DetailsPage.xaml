@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KigooPCMauiSimple.Views.DetailsPage"
+             xmlns:viewmodel="clr-namespace:KigooPCMauiSimple.ViewModels.AppViewModel"
+             Title="{Binding PropertyDetailViewModel.Property.Name}">
+  <ContentPage.BindingContext>
+    <viewmodel:PropertyDetailsViewModel/>
+  </ContentPage.BindingContext>
+
+
+
+  <Grid Margin="5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="2*"/>
+    </Grid.RowDefinitions>
+
+
+
+    <CarouselView Loop="False" ItemsSource="{Binding PropertyDetailViewModel.PropertySliders}">
+      <CarouselView.ItemTemplate>
+        <DataTemplate>
+          <Image Source="{Binding ImageName}" Margin="5"/>
+        </DataTemplate>
+      </CarouselView.ItemTemplate>
+    </CarouselView>
+
+    <StackLayout Grid.Row="1">
+      
+      
+
+      <Grid  RowDefinitions="*,*">
+
+      </Grid>
+
+      <TableView HasUnevenRows="True" >
+        <TableView.Root>
+
+          <TableSection Title="About">
+            <ViewCell>
+              <StackLayout  VerticalOptions="FillAndExpand">
+                <Label Text="{Binding PropertyDetailViewModel.Property.Description}" Margin="5"/>
+              </StackLayout>
+
+            </ViewCell>
+          </TableSection>
+          
+          
+          <TableSection Title="Contact Agent">
+            <ViewCell>
+              <Button Grid.Row="1"  Text="Contact Agent" Clicked="Button_Clicked"/>
+            </ViewCell>
+          </TableSection>
+
+
+          <TableSection Title="Property Details">
+            <TextCell Text="Name"
+                      Detail="{Binding PropertyDetailViewModel.Property.Name}"/>
+
+            <TextCell Text="Currency"
+                      Detail="{Binding PropertyDetailViewModel.Property.Currency.Sign}"/>
+            <TextCell Text="Price"
+                      Detail="{Binding PropertyDetailViewModel.Property.Price}"/>
+            <TextCell Text="Address"
+                      Detail="{Binding PropertyDetailViewModel.Property.Address}"/>
+            <TextCell Text="Number of Bathrooms"
+                      Detail="{Binding PropertyDetailViewModel.Property.bathrooms}"/>
+            <TextCell Text="Number of BedRooms"
+                      Detail="{Binding PropertyDetailViewModel.Property.BedRooms}"/>
+            <TextCell Text="Number of Gurage"
+                      Detail="{Binding PropertyDetailViewModel.Property.Garage}"/>
+          </TableSection>
+
+
+
+        </TableView.Root>
+      </TableView>
+    </StackLayout>
+   
+
+   
+
+  </Grid>
+
+
+
+</ContentPage>

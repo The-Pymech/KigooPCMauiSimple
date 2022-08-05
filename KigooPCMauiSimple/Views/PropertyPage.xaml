@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KigooPCMauiSimple.Views.PropertyPage"
+              xmlns:viewModel="clr-namespace:KigooPCMauiSimple.ViewModels.AppViewModel"
+             Title="Properties">
+
+  <ContentPage.BindingContext>
+    <viewModel:PropertiesViewModel/>
+  </ContentPage.BindingContext>
+  <StackLayout >
+   
+    <SearchBar HorizontalOptions="FillAndExpand" 
+               VerticalOptions="Start"
+               Placeholder="Search Property"
+               BackgroundColor="{AppThemeBinding Light={StaticResource Primary},
+      Dark={StaticResource Gray500}}"
+               Text="{Binding SearchTerm, Mode=TwoWay}"
+               SearchCommand="{Binding SearchNameCommand}"
+               
+       />
+
+    <ListView ItemsSource="{Binding Properties}" 
+              Margin="00,10,00,00"
+              SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+              >
+     
+      
+      
+      <ListView.ItemTemplate >
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Orientation="Horizontal">
+              <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer CommandParameter="{Binding .}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:PropertiesViewModel}},Path=GoToDetailsCommand}"/>
+
+              </StackLayout.GestureRecognizers>
+              <Image HeightRequest="75" WidthRequest="75" 
+                     Aspect="AspectFill" Source="{Binding MainImageName}"/>
+
+              <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                <Label Text="{Binding Name}"/>
+                <Label Text="{Binding Address}" FontSize="Subtitle"/>
+              </StackLayout>
+
+            </StackLayout>
+          </ViewCell>
+             
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+  </StackLayout>
+</ContentPage>
