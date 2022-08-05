@@ -14,6 +14,8 @@ using KigooPCMauiSimple.Views;
 namespace KigooPCMauiSimple.ViewModels.AppViewModel
 {
 
+
+
   public partial class PropertiesViewModel : BasePageViewModel
   {
     ObservableCollection<Property> source = GetProperties().Result;
