@@ -98,6 +98,18 @@ namespace KigooPCMauiSimple.Models
 
   }
 
+
+  public class HomePageSliders
+  {
+    public int Id { get; set; }
+
+    public string ImageName { get; set; }
+
+
+
+
+  }
+
   public class ContactUs
   {
     [Key]

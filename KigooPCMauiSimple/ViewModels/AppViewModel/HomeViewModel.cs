@@ -15,8 +15,10 @@ namespace KigooPCMauiSimple.ViewModels.AppViewModel
   {
     public HomeViewModel()
     {
+      this.isBusy = true;
       this.slider = GetData.GetSliders();
       this.latestProperty =  GetData.GetProperties().Result;
+      this.isBusy = false;
     }
 
 
@@ -49,16 +51,7 @@ namespace KigooPCMauiSimple.ViewModels.AppViewModel
   }
 
 
-  public class HomePageSliders
-  {
-    public int Id { get; set; }
-
-    public string ImageName { get; set; }
-
-
-
-
-  }
+ 
 
   public class GetData
   {

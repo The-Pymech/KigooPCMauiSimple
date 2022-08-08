@@ -18,7 +18,6 @@ public static class MauiProgram
          });
 
 
-
     builder.Services.AddSingleton<HomeService>();
     builder.Services.AddSingleton<PropertiesService>();
     builder.Services.AddTransient<RestService>();

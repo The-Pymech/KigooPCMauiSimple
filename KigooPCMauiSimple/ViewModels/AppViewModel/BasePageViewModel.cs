@@ -12,7 +12,7 @@ namespace KigooPCMauiSimple.ViewModels.AppViewModel
 
     public BasePageViewModel()
     {
-      isNotBusy = !IsBusy;
+      this.isNotBusy = !this.isBusy;
     }
 
     [ObservableProperty]
@@ -24,7 +24,7 @@ namespace KigooPCMauiSimple.ViewModels.AppViewModel
 
 
     [ObservableProperty]
-    public string pageTitle;
+    public string title;
     
 
 

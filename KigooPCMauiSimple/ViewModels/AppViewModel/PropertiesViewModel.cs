@@ -18,13 +18,15 @@ namespace KigooPCMauiSimple.ViewModels.AppViewModel
 
   public partial class PropertiesViewModel : BasePageViewModel
   {
-    ObservableCollection<Property> source = GetProperties().Result;
+     
 
     public PropertiesViewModel()
     {
       this.properties = GetProperties().Result;
     }
 
+
+    
 
     [ObservableProperty]
     ObservableCollection<Property> properties;
@@ -46,32 +48,32 @@ namespace KigooPCMauiSimple.ViewModels.AppViewModel
       if (string.IsNullOrEmpty(searchTerm))
       {
         searchTerm = string.Empty;
-        properties = source;
+        
       }
-
-      searchTerm = searchTerm.ToLowerInvariant();
-      var fiteredItems = (ObservableCollection<Property>)source.Where(m =>
-      m.Name.ToLowerInvariant().Contains(searchTerm)
-      || m.Address.ToLowerInvariant().Contains(searchTerm));
-
-
-
-
-      foreach (var item in source)
+      else
       {
+        var zeSource = GetProperties().Result;
+        searchTerm = searchTerm.ToLowerInvariant();
+        var fiteredItems = zeSource.Where(m =>
+        m.Name.ToLowerInvariant().Contains(searchTerm)
+        || m.Address.ToLowerInvariant().Contains(searchTerm));
 
+          
+            properties.Clear();
+          
 
+          foreach (var item in fiteredItems)
+          {
+            properties.Add(item);
+          }
 
+        
 
-        if (!fiteredItems.Contains(item))    
-        {
-          properties  .Remove(item);
-        }
-        else if (!Properties.Contains(item))
-        {
-          properties.Add(item);
-        }
       }
+
+
+
+
 
     }
 
